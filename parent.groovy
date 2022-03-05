@@ -8,7 +8,7 @@ import java.nio.file.Files
 
 pipeline {
     agent {
-        label "master"
+        label "sub_node"
     }
 
     stages {
