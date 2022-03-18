@@ -8,7 +8,7 @@ import java.nio.file.Files
 
 pipeline {
     agent {
-        label "sub_node"
+        label "jenkins_slave"
     }
 
     stages {
