@@ -149,28 +149,28 @@ pipeline {
         //     }
         // }
 
-        stage ('Push Git'){
-            steps{
-                script{
-                    echo "Push Git"
-                    echo "${env.JOB_NAME}"
-                    dir(path: "${env.WORKSPACE}\\PushSaki"){
-                        try {
-                            bat """
-                                git checkout main
-                                git add .
-                                git commit -am \"ATGCode Push by Jenkins\"
-                                git push origin main
-                                """
-                                echo "####test####"
-                        } catch (Exception  e) {
-                            printMessage(e)
-                            currentBuild.result = 'FAILURE'
-                        }
-                    }
-                }
-            }
-        }
+        // stage ('Push Git'){
+        //     steps{
+        //         script{
+        //             echo "Push Git"
+        //             echo "${env.JOB_NAME}"
+        //             dir(path: "${env.WORKSPACE}\\PushSaki"){
+        //                 try {
+        //                     bat """
+        //                         git checkout main
+        //                         git add .
+        //                         git commit -am \"ATGCode Push by Jenkins\"
+        //                         git push origin main
+        //                         """
+        //                         echo "####test####"
+        //                 } catch (Exception  e) {
+        //                     printMessage(e)
+        //                     currentBuild.result = 'FAILURE'
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
 
     }
 
