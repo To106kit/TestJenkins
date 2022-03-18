@@ -91,21 +91,21 @@ pipeline {
             }
         }
 
-        stage('03 mkdir') {
-            steps {
-                script {
-                    echo "##### 03 mkdir #####"
-                    def FolderPath = 'test2'
-                    def FileName = 'text2'
-                    fileOperations([
-                        folderCreateOperation(folderPath: FolderPath)
-                    ])
-                    fileOperations([
-                        fileCreateOperation(fileName: "${env.WORKSPACE}\\${FolderPath}\\${FileName}.txt", fileContent: "test context")
-                    ])
-                }
-            }
-        }
+        // stage('03 mkdir') {
+        //     steps {
+        //         script {
+        //             echo "##### 03 mkdir #####"
+        //             def FolderPath = 'test2'
+        //             def FileName = 'text2'
+        //             fileOperations([
+        //                 folderCreateOperation(folderPath: FolderPath)
+        //             ])
+        //             fileOperations([
+        //                 fileCreateOperation(fileName: "${env.WORKSPACE}\\${FolderPath}\\${FileName}.txt", fileContent: "test context")
+        //             ])
+        //         }
+        //     }
+        // }
 
         stage('Clone Git PushSaki') {
             steps {
@@ -138,16 +138,16 @@ pipeline {
 
 
 
-        stage('04 copy result') {
-            steps {
-                script {
-                    echo "##### 04 copy result #####"
-                    echo "${env.WORKSPACE}"
-                    fileOperations([folderCopyOperation(sourceFolderPath:"${env.WORKSPACE}\\test2\\", 
-                                    destinationFolderPath:"${env.WORKSPACE}\\PushSaki")])
-                }
-            }
-        }
+        // stage('04 copy result') {
+        //     steps {
+        //         script {
+        //             echo "##### 04 copy result #####"
+        //             echo "${env.WORKSPACE}"
+        //             fileOperations([folderCopyOperation(sourceFolderPath:"${env.WORKSPACE}\\test2\\", 
+        //                             destinationFolderPath:"${env.WORKSPACE}\\PushSaki")])
+        //         }
+        //     }
+        // }
 
         stage ('Push Git'){
             steps{
@@ -162,6 +162,7 @@ pipeline {
                                 git commit -am \"ATGCode Push by Jenkins\"
                                 git push origin main
                                 """
+                                echo "####test####"
                         } catch (Exception  e) {
                             printMessage(e)
                             currentBuild.result = 'FAILURE'
