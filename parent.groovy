@@ -160,7 +160,6 @@ pipeline {
                                 git checkout main
                                 git add .
                                 git commit -am \"ATGCode Push by Jenkins\"
-                                set GIT_TRACE=1
                                 git push origin main
                                 """
                         } catch (Exception  e) {
