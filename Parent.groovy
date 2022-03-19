@@ -119,34 +119,34 @@ pipeline {
         //     }
         // }
 
-        stage('Clone Git PushSaki') {
-            steps {
-                script {
-                    echo "Clone Git PushSaki"
-                    // ソースコードのリモートリポジトリをローカルリポジトリにダウンロード
-                    dir(path: "${env.WORKSPACE}\\PushSaki"){
-                    try {
-                        checkout([$class: 'GitSCM', 
-                                    branches: [[name: "${params.configBranches}"]], 
-                                    doGenerateSubmoduleConfigurations: false, 
-                                    extensions: [
-                                        [$class: 'SparseCheckoutPaths',  sparseCheckoutPaths:[[$class:'SparseCheckoutPath', path:'System_X/']]]
-                                                ],
-                                    submoduleCfg: [],
-                                    userRemoteConfigs: [
-                                        [credentialsId: "${params.configCredentials}", 
-                                        url: "${params.PushSakiUrl}"
-                                        ]
-                                    ]
-                                ])
-                        } catch (Exception  e) {
-                            printMessage(e)
-                            currentBuild.result = 'FAILURE'
-                        }
-                    }
-                }
-            }
-        }
+        // stage('Clone Git PushSaki') {
+        //     steps {
+        //         script {
+        //             echo "Clone Git PushSaki"
+        //             // ソースコードのリモートリポジトリをローカルリポジトリにダウンロード
+        //             dir(path: "${env.WORKSPACE}\\PushSaki"){
+        //             try {
+        //                 checkout([$class: 'GitSCM', 
+        //                             branches: [[name: "${params.configBranches}"]], 
+        //                             doGenerateSubmoduleConfigurations: false, 
+        //                             extensions: [
+        //                                 [$class: 'SparseCheckoutPaths',  sparseCheckoutPaths:[[$class:'SparseCheckoutPath', path:'System_X/']]]
+        //                                         ],
+        //                             submoduleCfg: [],
+        //                             userRemoteConfigs: [
+        //                                 [credentialsId: "${params.configCredentials}", 
+        //                                 url: "${params.PushSakiUrl}"
+        //                                 ]
+        //                             ]
+        //                         ])
+        //                 } catch (Exception  e) {
+        //                     printMessage(e)
+        //                     currentBuild.result = 'FAILURE'
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
 
 
 
