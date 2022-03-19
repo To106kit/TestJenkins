@@ -174,6 +174,22 @@ pipeline {
 
     }
 
+
+    stage('Preparation') {
+            steps {
+                echo '[CI/CT] [Information] 01 Execute a Preparation job'
+                //PreparationJobの実行
+                build job: 'Preparation',
+                    parameters: [
+                        string(name: 'buildId', value: "${env.BUILD_ID}"),
+                        string(name: 'netDrive', value: "${yamlParentConfig.common.containerUrl}\\${jobFolderName}"),
+                        string(name: 'netDriveUsespace', value: "${yamlParentConfig.common.containerUrl}\\${jobFolderName}\\${env.BUILD_ID}"),
+                        string(name: 'executeLabel', value: params.executeLabel),
+                        string(name: 'scopeID', value: "${yamlParentConfig.scopeID}")
+                    ], wait: true
+            }
+        }
+        
     post {
         always {
             script {
