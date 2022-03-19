@@ -26,6 +26,7 @@ pipeline {
                 steps {
                     script {
                         echo "${params.executeLabel}"
+                        echo "${params.executeLabel}"
                         echo "##### 03 mkdir #####"
                     }
                 }

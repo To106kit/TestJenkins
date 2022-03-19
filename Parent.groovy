@@ -8,7 +8,7 @@ import java.nio.file.Files
 
 pipeline {
     agent {
-        label "jenkins_slave"
+        label "${params.executeLabel}"
     }
 
     stages {
@@ -97,7 +97,7 @@ pipeline {
                 //PreparationJobの実行
                 build job: 'Preparation',
                     parameters: [
-                        string(name: 'executeLabel', value: params.executeLabel)
+                        string(name: 'executeLabel', value: 'jenkins_slave_tool')
                     ], wait: true
             }
         }
