@@ -25,6 +25,7 @@ pipeline {
             stage('03 mkdir') {
                 steps {
                     script {
+                        echo "${params.executeLabel}"
                         echo "##### 03 mkdir #####"
                     }
                 }

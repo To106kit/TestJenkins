@@ -91,16 +91,16 @@ pipeline {
             }
         }
 
-        // stage('Preparation') {
-        //     steps {
-        //         echo '[CI/CT] [Information] 01 Execute a Preparation job'
-        //         //PreparationJobの実行
-        //         build job: 'Preparation',
-        //             parameters: [
-        //                 string(name: 'executeLabel', value: params.executeLabel)
-        //             ], wait: true
-        //     }
-        // }
+        stage('Preparation') {
+            steps {
+                echo '[CI/CT] [Information] 01 Execute a Preparation job'
+                //PreparationJobの実行
+                build job: 'Preparation',
+                    parameters: [
+                        string(name: 'executeLabel', value: params.executeLabel)
+                    ], wait: true
+            }
+        }
 
 
         // stage('03 mkdir') {
